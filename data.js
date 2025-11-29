@@ -17,7 +17,7 @@ let pustakaGame = [
     id: 3,
     judul: "Red Dead Redemption 2",
     genre: "Action-Adventure",
-    platform: "PlayStation 4",
+    platform: "Mobile",
     status: "Belum Dimainkan"
   }
 ];
