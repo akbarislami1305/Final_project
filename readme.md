@@ -51,7 +51,8 @@ endpoint: http://localhost:3000/games
 
 2. Menampilkan semua game dan filter game berdasarkan platform 
 Metode: GET
-endpoint: http://localhost:3000/games 
+endpoint: http://localhost:3000/games
+``` 
  {
     id: 1,
     judul: "The Witcher 3: Wild Hunt",
@@ -66,6 +67,9 @@ endpoint: http://localhost:3000/games
     platform: "PC",
     status: "Sedang Dimainkan"
   },
+  ```
+```
+
   {
     id: 3,
     judul: "Red Dead Redemption 2",
@@ -73,7 +77,8 @@ endpoint: http://localhost:3000/games
     platform: "Mobile",
     status: "Belum Dimainkan"
   }
-};  
+};
+```  
 Respon Sukses: 200 OK dengan array data game.
 
 filter game memakai metode dynamic routing  query parameter untuk menyaring platform sesuai yang diinput oleh user:
@@ -89,10 +94,12 @@ filter game memakai metode dynamic routing  query parameter untuk menyaring plat
 - endpoint:  http://localhost:3000/games/1 (Mengganti 1 dengan ID game yang ingin diupdate) 
 - tipe dynamic routing yang digunakan yaitu pathparameter 
 - menggunakan Body Request (JSON Wajib):
+```
+
 {
   "status": "Sedang Dimainkan"
 }
-
+```
 - respon: kalau sukses status code yang muncul yaitu 200 ok, sedangkan jika gagal status code yang muncul yaitu 404 Not Found jika id tidak ada
 
 5. menghapus game
