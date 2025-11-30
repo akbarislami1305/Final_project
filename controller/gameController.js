@@ -89,12 +89,19 @@ export const updateStatusGame = (req, res) => {
   try {
     const id = parseInt(req.params.id);
     const { status } = req.body; 
+    const statusValid = ["Sudah Tamat", "Sedang Dimainkan", "Belum Dimainkan"];
+
     if (!status) {
       return res.status(400).json({
         message: "Status baru wajib diisi."
       });
     }
 
+    if (!statusValid.includes(status)) {
+    return res.status(400).json({
+    message: `Status tidak valid. Status yang diizinkan: ${statusValid.join(', ')}.`
+  });
+}
     const gameIndex = pustakaGame.findIndex(g => g.id === id);
 
     if (gameIndex === -1) {
