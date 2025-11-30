@@ -89,7 +89,8 @@ export const updateStatusGame = (req, res) => {
   try {
     const id = parseInt(req.params.id);
     const { status } = req.body; 
-    const statusValid = ["Sudah Tamat", "Sedang Dimainkan", "Belum Dimainkan"];
+    const statusValidLowercase = ["Sudah Tamat", "Sedang Dimainkan", "Belum Dimainkan"];
+    const statusForValidation = statusInput ? statusInput.toLowerCase() : '';
 
     if (!status) {
       return res.status(400).json({
@@ -97,11 +98,12 @@ export const updateStatusGame = (req, res) => {
       });
     }
 
-    if (!statusValid.includes(status)) {
-    return res.status(400).json({
-    message: `Status tidak valid. Status yang diizinkan: ${statusValid.join(', ')}.`
-  });
-}
+    if (!statusValidLowercase.includes(statusForValidation)) {
+      const statusValidDisplay = ["Sudah Tamat", "Sedang Dimainkan", "Belum Dimainkan"];
+      return res.status(400).json({
+        message: `Status tidak valid: "${statusInput}". Status yang diizinkan: ${statusValidDisplay.join(', ')}.`
+      });
+    }
     const gameIndex = pustakaGame.findIndex(g => g.id === id);
 
     if (gameIndex === -1) {
