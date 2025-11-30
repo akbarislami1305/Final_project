@@ -90,6 +90,7 @@ export const updateStatusGame = (req, res) => {
     const id = parseInt(req.params.id);
     const { status } = req.body; 
     const statusValidLowercase = ["Sudah Tamat", "Sedang Dimainkan", "Belum Dimainkan"];
+    const statusInput = status;
     const statusForValidation = statusInput ? statusInput.toLowerCase() : '';
 
     if (!status) {
